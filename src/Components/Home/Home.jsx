@@ -14,6 +14,15 @@ const Home = () => {
       .then((data) => setArtists(data));
   }, []);
 
+  const removeHired = (hiredArtist) => {
+    const remainingArtists = hiredArtists.filter(
+      (artist) => artist !== hiredArtist
+    );
+    setHiredArtists(remainingArtists);
+    setRemaining(remaining + hiredArtist.salary);
+    setPrice(price - hiredArtist.salary);
+  };
+
   const handleHire = (artist) => {
     {
       if (hiredArtists.includes(artist)) {
@@ -41,6 +50,7 @@ const Home = () => {
         remaining={remaining}
         price={price}
         hiredArtists={hiredArtists}
+        removeHired={removeHired}
       ></Cart>
     </div>
   );
