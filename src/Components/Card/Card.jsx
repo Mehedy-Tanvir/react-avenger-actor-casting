@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-const Card = ({ artist }) => {
+const Card = ({ artist, handleHire }) => {
   return (
     <div className="shadow-xl card bg-base-100">
       <figure>
@@ -12,9 +12,14 @@ const Card = ({ artist }) => {
         <p className="text-xl font-bold ">{artist.name}</p>
         <p>Age: {artist.age}</p>
         <p>Country: {artist.country}</p>
-        <p>Salary: {artist.salary}</p>
+        <p>Salary: {artist.salary} $</p>
         <div className="justify-center card-actions">
-          <button className="btn btn-primary">Hire</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => handleHire(artist)}
+          >
+            Hire
+          </button>
         </div>
       </div>
     </div>
@@ -22,6 +27,7 @@ const Card = ({ artist }) => {
 };
 Card.propTypes = {
   artist: PropTypes.object.isRequired,
+  handleHire: PropTypes.func.isRequired,
 };
 
 export default Card;
